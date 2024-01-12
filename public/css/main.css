@@ -1,8 +1,32 @@
-body {
+
+.container {
+    display:grid;
+    /* 3 columns named left-sidebar, main and right-sidebar */
+    grid-template-columns: [left-sidebar-start] 1fr [left-sidebar-end main-start] 4fr [main-end right-sidebar-start] 1fr [right-sidebar-end];
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 10rem;
+}
+
+.left-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: left-sidebar;
+}
+
+.main {
+    grid-area: main;
+}
+
+.right-sidebar {
+    grid-area: right-sidebar;
+    display: flex;
+    flex-direction: column;
+    justify-items: stretch;
 }
 
 button.cookie {
     all: unset;
     cursor:pointer;
-    font-size: 4rem;
+    /* font-size: 4rem; */
 }

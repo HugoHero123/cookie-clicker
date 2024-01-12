@@ -7,7 +7,7 @@ module Main exposing (..)
 --
 
 import Browser
-import Html exposing (Html, button, div, text)
+import Html exposing (Html, button, div, main_, text)
 import Html.Attributes exposing (class)
 import Html.Events exposing (onClick)
 import Time
@@ -92,11 +92,13 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ div [] [ text (Debug.toString model) ]
-        , button [ onClick Increment, class "cookie" ] [ text "🍪" ]
-        , button [ onClick Reset ] [ text "Reset" ]
-        , button [ onClick ClickedBuyCursor ] [ text "Cursor" ]
+    div [ class "container" ]
+        [ div [ class "left-sidebar" ]
+            [ div [ class "points" ] [ text (String.fromFloat model.points) ]
+            , button [ onClick Increment, class "cookie" ] [ text "🍪" ]
+            ]
+        , main_ [ class "main" ] [ text "main" ]
+        , div [ class "right-sidebar" ] [ button [ onClick Reset ] [ text "Reset" ], button [ onClick ClickedBuyCursor ] [ text "Cursor" ] ]
         ]
 
 
