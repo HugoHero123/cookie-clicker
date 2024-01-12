@@ -125,11 +125,16 @@ roundPoints x =
     toFloat (round (x * 10)) / 10
 
 
+initPointsPerClick : Points
+initPointsPerClick =
+    1
+
+
 pointsPerClick : Model -> Points
 pointsPerClick model =
     case model.cursors of
         0 ->
-            1
+            initPointsPerClick
 
         _ ->
-            1 + (toFloat model.cursors / 10)
+            initPointsPerClick + (toFloat model.cursors / 10 * initPointsPerClick)
