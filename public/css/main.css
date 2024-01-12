@@ -1,0 +1,8 @@
+body {
+}
+
+button.cookie {
+    all: unset;
+    cursor:pointer;
+    font-size: 4rem;
+}
