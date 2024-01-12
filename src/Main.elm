@@ -36,6 +36,10 @@ type alias Model =
     }
 
 
+type alias Points =
+    Float
+
+
 
 -- antalet cursors
 -- poängen
@@ -65,7 +69,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Increment ->
-            ( { model | points = model.points + 1 }, Cmd.none )
+            ( { model | points = model.points + pointsPerClick model }, Cmd.none )
 
         Reset ->
             init ()
@@ -94,11 +98,18 @@ view : Model -> Html Msg
 view model =
     div [ class "container" ]
         [ div [ class "left-sidebar" ]
-            [ div [ class "points" ] [ text (String.fromFloat model.points) ]
+            [ div [ class "points" ] [ text (String.fromFloat (roundPoints model.points)) ]
             , button [ onClick Increment, class "cookie" ] [ text "🍪" ]
             ]
-        , main_ [ class "main" ] [ text "main" ]
-        , div [ class "right-sidebar" ] [ button [ onClick Reset ] [ text "Reset" ], button [ onClick ClickedBuyCursor ] [ text "Cursor" ] ]
+        , main_ [ class "main" ] [ text "" ]
+        , div [ class "right-sidebar" ]
+            [ button [ onClick Reset ] [ text "Reset" ]
+            , button [ onClick ClickedBuyCursor ]
+                [ text "Cursor ("
+                , text (String.fromInt model.cursors)
+                , text ")"
+                ]
+            ]
         ]
 
 
@@ -107,3 +118,18 @@ subscriptions model =
     Sub.batch
         [ Time.every 10000 (\_ -> Tick)
         ]
+
+
+roundPoints : Float -> Float
+roundPoints x =
+    toFloat (round (x * 10)) / 10
+
+
+pointsPerClick : Model -> Points
+pointsPerClick model =
+    case model.cursors of
+        0 ->
+            1
+
+        _ ->
+            1 + (toFloat model.cursors / 10)

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "elm-watch hot"
+    "start": "elm-watch hot"
   },
   "devDependencies": {
     "elm-watch": "^2.0.0-beta.1"
