@@ -6,5 +6,6 @@
             ],
             "output": "public/js/main.js"
         }
-    }
+    },
+    "serve": "./public"
 }
