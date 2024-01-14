@@ -18,6 +18,9 @@ jobs:
       with:
         node-version: '20'  # Set your Node.js version here
 
+    - name: Install Elm
+      run: npm install -g elm
+
     - name: Install Dependencies
       run: npm install
 
