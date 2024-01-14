@@ -1,6 +1,6 @@
 {
     "targets": {
-        "My target name": {
+        "cookie-clicker": {
             "inputs": [
                 "src/Main.elm"
             ],

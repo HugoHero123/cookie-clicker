@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "elm-watch hot"
+    "start": "elm-watch hot",
+    "build": "elm-watch make --optimize"
   },
   "devDependencies": {
     "elm-watch": "^2.0.0-beta.1"
